@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio YANIS TONIUTTO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1e90ff;
+      --secondary: #00bcd4;
+      --accent: #00ffaa;
+      --background: #0d1117;
+      --card-bg: #161b22;
+      --text: #e6edf3;
+      --text-secondary: #9ba3af;
+      --shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--card-bg);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: var(--shadow);
+      z-index: 100;
+    }
+
+    .top-navbar a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 16px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      transition: color 0.3s, background 0.3s;
+    }
+
+    .top-navbar a.active, .top-navbar a:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 120px 20px 40px;
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    }
+
+    header .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 20px rgba(30,144,255,0.4);
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-top: 20px;
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--text-secondary);
+      font-size: 1.2em;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      color: var(--secondary);
+      margin-top: 24px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 8px 0;
+      color: var(--text-secondary);
+    }
+
+    .img-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .img-row img {
+      width: 80px;
+      border-radius: 10px;
+      background: #1c1f26;
+      padding: 8px;
+      transition: transform 0.3s;
+    }
+
+    .img-row img:hover {
+      transform: scale(1.1);
+    }
+
+    .stage-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .stage-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.05);
+    }
+
+    .competence-btn {
+      background: var(--secondary);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .competence-btn:hover {
+      background: var(--accent);
+    }
+
+    /* Supprimer la barre des réseaux */
+    .social-float { display: none; }
+
+    /* Animations simples */
+    section {
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    function showPage(pageId) {
+      const pages = ['presentation', 'lycee', 'stages', 'cvlettre'];
+      pages.forEach(id => {
+        document.getElementById(id).style.display = "none";
+      });
+      document.getElementById(pageId).style.display = "block";
+
+      document.querySelectorAll('.top-navbar a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    window.onload = () => showPage('presentation');
+  </script>
+</head>
+
+<body>
+  <div class="top-navbar">
+    <a href="#" onclick="showPage('presentation')">Présentation</a>
+    <a href="#" onclick="showPage('lycee')">Lycée Gaston Berger</a>
+    <a href="#" onclick="showPage('stages')">Stages</a>
+    <a href="#" onclick="showPage('cvlettre')">CV & Lettre</a>
+  </div>
+
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="profile-pic" alt="Photo de profil">
+    <h1>YANIS TONIUTTO</h1>
+    <p>Étudiant en 2<sup>e</sup> année de BTS SIO SISR – Lycée Gaston Berger (Lille)</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Présentation -->
+    <section id="presentation">
+      <div class="card">
+        <h2>Présentation</h2>
+        <div class="img-row">
+          <img src="https://cdn-icons-png.flaticon.com/512/2721/2721304.png" alt="SISR">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Moi">
+        </div>
+        <p>
+          Bonjour, je m'appelle <strong>YANIS TONIUTTO</strong>.  
+          Je suis actuellement étudiant en <strong>2e année de BTS SIO option SISR</strong> au lycée <strong>Gaston Berger</strong> à Lille.
+        </p>
+        <p>
+          Passionné par l’informatique, l’administration réseau et la cybersécurité, je souhaite poursuivre mes études dans le domaine des infrastructures et systèmes informatiques afin de devenir un technicien réseau confirmé.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lycée -->
+    <section id="lycee" style="display:none;">
+      <div class="card">
+        <h2>Lycée Gaston Berger – Lille</h2>
+        <div class="img-row">
+          <img src="https://www.lycee-gastonberger.fr/wp-content/uploads/2021/09/berger-1-scaled.jpg" alt="Lycée Gaston Berger">
+        </div>
+        <p>
+          Le <strong>lycée Gaston Berger</strong> à Lille propose la formation <strong>BTS SIO SISR</strong>, orientée vers les systèmes et réseaux informatiques.  
+          Cette formation permet d’acquérir des compétences solides en gestion, maintenance et sécurité d’infrastructures informatiques.
+        </p>
+      </div>
+    </section>
+
+    <!-- Stages -->
+    <section id="stages" style="display:none;">
+      <div class="card">
+        <h2>Stages</h2>
+        <p>Retrouvez ici la présentation de mes stages réalisés durant mes deux années de BTS.</p>
+        <h3><i class="fa-solid fa-building"></i> Entreprise : NORD DECO SERVICES</h3>
+                <h4><i class="fa-solid fa-network-wired"></i> Secteur : Réseaux et Infrastructure Informatique</h4>
+                <p>
+                    Lors de ma première année de BTS SIO SISR, j'ai effectué un stage chez <strong>NDS</strong> à <strong>Annoeullin</strong> dans le secteur des réseaux et de l'infrastructure informatique.
+                </p>
+                <div class="competences-list">
+                    <h3>Compétences du stage</h3>
+                    <ul>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('patrimoine1')">Gérer le patrimoine informatique</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('incidents1')">Répondre aux incidents et aux demandes d'assistance et d'évolution</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('presence1')">Développer la présence en ligne de l'organisation</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('projet1')">Travailler en mode projet</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('service1')">Mettre à disposition des utilisateurs un service informatique</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('devpro1')">Organiser son développement professionnel</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Détails des compétences Stage 1 -->
+                <div class="competence-details" id="patrimoine1" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('patrimoine1')">Fermer</button>
+                    <h4>Gérer le patrimoine informatique</h4>
+                    <ul>
+                        <li>Recenser et identifier les ressources numériques</li>
+                        <li>Exploiter des référentiels, normes et standards adoptés par le prestataire informatique</li>
+                        <li>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li>
+                        <li>Vérifier les conditions de la continuité d'un service informatique</li>
+                        <li>Gérer des sauvegardes</li>
+                        <li>Vérifier le respect des règles d'utilisation des ressources numériques</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="incidents1" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('incidents1')">Fermer</button>
+                    <h4>Répondre aux incidents et aux demandes d'assistance et d'évolution</h4>
+                    <ul>
+                        <li>Collecter, suivre et orienter des demandes</li>
+                        <li>Traiter des demandes concernant les services réseau et système, applicatifs</li>
+                        <li>Traiter des demandes concernant les applications</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="presence1" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('presence1')">Fermer</button>
+                    <h4>Développer la présence en ligne de l'organisation</h4>
+                    <ul>
+                        <li>Participer à la valorisation de l'image de l'organisation sur les médias numériques en tenant compte du cadre juridique et des enjeux économiques</li>
+                        <li>Référencer les services en ligne de l'organisation et mesurer leur visibilité</li>
+                        <li>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="projet1" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('projet1')">Fermer</button>
+                    <h4>Travailler en mode projet</h4>
+                    <ul>
+                        <li>Analyser les objectifs et les modalités d'organisation d'un projet</li>
+                        <li>Planifier les activités</li>
+                        <li>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="service1" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('service1')">Fermer</button>
+                    <h4>Mettre à disposition des utilisateurs un service informatique</h4>
+                    <ul>
+                        <li>Réaliser les tests d'intégration et d'acceptation d'un service</li>
+                        <li>Déployer un service</li>
+                        <li>Accompagner les utilisateurs dans la mise en place d'un service</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="devpro1" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('devpro1')">Fermer</button>
+                    <h4>Organiser son développement professionnel</h4>
+                    <ul>
+                        <li>Mettre en place son environnement d'apprentissage personnel</li>
+                        <li>Mettre en œuvre des outils et stratégies de veille informationnelle</li>
+                        <li>Gérer son identité professionnelle</li>
+                        <li>Développer son projet professionnel</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Stage 2ème année (caché par défaut) -->
+            <div class="card stage-details" id="stage2-details" style="display:none;">
+                <button class="back-btn" onclick="hideStageDetails()"><i class="fa-solid fa-arrow-left"></i> Retour aux stages</button>
+                <h2><span class="icon"><i class="fa-solid fa-briefcase"></i></span> Stage de 2<sup>ème</sup> année</h2>
+                <div class="img-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721296.png" alt="Réseaux" title="Réseaux" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Étudiants" title="Étudiants" />
+                </div>
+                <p>
+                    <i class="fa-solid fa-hourglass-half"></i> Informations à venir...
+                </p>
+                <div class="competences-list">
+                    <h3>Compétences du stage</h3>
+                    <ul>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('patrimoine2')">Gérer le patrimoine informatique</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('incidents2')">Répondre aux incidents et aux demandes d'assistance et d'évolution</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('presence2')">Développer la présence en ligne de l'organisation</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('projet2')">Travailler en mode projet</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('service2')">Mettre à disposition des utilisateurs un service informatique</button>
+                        </li>
+                        <li>
+                            <button class="competence-btn" onclick="showCompetence('devpro2')">Organiser son développement professionnel</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Détails des compétences Stage 2 -->
+                <div class="competence-details" id="patrimoine2" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('patrimoine2')">Fermer</button>
+                    <h4>Gérer le patrimoine informatique</h4>
+                    <ul>
+                        <li>Recenser et identifier les ressources numériques</li>
+                        <li>Exploiter des référentiels, normes et standards adoptés par le prestataire informatique</li>
+                        <li>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li>
+                        <li>Vérifier les conditions de la continuité d'un service informatique</li>
+                        <li>Gérer des sauvegardes</li>
+                        <li>Vérifier le respect des règles d'utilisation des ressources numériques</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="incidents2" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('incidents2')">Fermer</button>
+                    <h4>Répondre aux incidents et aux demandes d'assistance et d'évolution</h4>
+                    <ul>
+                        <li>Collecter, suivre et orienter des demandes</li>
+                        <li>Traiter des demandes concernant les services réseau et système, applicatifs</li>
+                        <li>Traiter des demandes concernant les applications</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="presence2" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('presence2')">Fermer</button>
+                    <h4>Développer la présence en ligne de l'organisation</h4>
+                    <ul>
+                        <li>Participer à la valorisation de l'image de l'organisation sur les médias numériques en tenant compte du cadre juridique et des enjeux économiques</li>
+                        <li>Référencer les services en ligne de l'organisation et mesurer leur visibilité</li>
+                        <li>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="projet2" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('projet2')">Fermer</button>
+                    <h4>Travailler en mode projet</h4>
+                    <ul>
+                        <li>Analyser les objectifs et les modalités d'organisation d'un projet</li>
+                        <li>Planifier les activités</li>
+                        <li>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="service2" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('service2')">Fermer</button>
+                    <h4>Mettre à disposition des utilisateurs un service informatique</h4>
+                    <ul>
+                        <li>Réaliser les tests d'intégration et d'acceptation d'un service</li>
+                        <li>Déployer un service</li>
+                        <li>Accompagner les utilisateurs dans la mise en place d'un service</li>
+                    </ul>
+                </div>
+                <div class="competence-details" id="devpro2" style="display:none;">
+                    <button class="close-competence" onclick="closeCompetence('devpro2')">Fermer</button>
+                    <h4>Organiser son développement professionnel</h4>
+                    <ul>
+                        <li>Mettre en place son environnement d'apprentissage personnel</li>
+                        <li>Mettre en œuvre des outils et stratégies de veille informationnelle</li>
+                        <li>Gérer son identité professionnelle</li>
+                        <li>Développer son projet professionnel</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <script>
+        // Affichage des détails de stage
+        function showStage(stageId) {
+            document.getElementById('stage1-details').style.display = 'none';
+            document.getElementById('stage2-details').style.display = 'none';
+            if(stageId === 'stage1') {
+                document.getElementById('stage1-details').style.display = 'block';
+            } else if(stageId === 'stage2') {
+                document.getElementById('stage2-details').style.display = 'block';
+            }
+        }
+        function hideStageDetails() {
+            document.getElementById('stage1-details').style.display = 'none';
+            document.getElementById('stage2-details').style.display = 'none';
+        }
+        // Affichage des compétences
+        function showCompetence(id) {
+            // Fermer toutes les compétences ouvertes
+            var all = document.querySelectorAll('.competence-details');
+            all.forEach(function(el){ el.style.display = 'none'; });
+            // Afficher la compétence demandée
+            document.getElementById(id).style.display = 'block';
+        }
+        function closeCompetence(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        </script>
+        <style>
+        .stage-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            padding: 18px 32px;
+            font-size: 1.1em;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            margin: 0 16px 16px 0;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 12px 0 rgba(79,140,255,0.13);
+        }
+        .stage-btn:hover {
+            background: var(--secondary);
+            color: #232946;
+            transform: scale(1.05);
+        }
+        .stage-details {
+            margin-top: 30px;
+        }
+        .back-btn {
+            background: none;
+            color: var(--primary);
+            border: none;
+            font-size: 1em;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            margin-bottom: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .competences-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .competence-btn {
+            background: var(--secondary);
+            color: #232946;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 18px;
+            font-size: 1em;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .competence-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: scale(1.07);
+        }
+        .competence-details {
+            background: #232946;
+            color: var(--text);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 12px 0 rgba(79,140,255,0.13);
+            position: relative;
+            animation: fadeInUp 0.7s;
+        }
+        .competence-details h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        .close-competence {
+            position: absolute;
+            top: 10px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        </style>
+        </section>
+      </div>
+    </section>
+
+    <!-- CV & Lettre -->
+    <section id="cvlettre" style="display:none;">
+      <div class="card">
+        <h2>Mon CV</h2>
+        <ul>
+          <li><strong>Nom :</strong> YANIS TONIUTTO</li>
+          <li><strong>Formation :</strong> BTS SIO SISR – Lycée Gaston Berger, Lille</li>
+          <li><strong>Compétences :</strong> Réseaux, systèmes, assistance utilisateur, cybersécurité</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Lettre de motivation</h2>
+        <p>
+          Madame, Monsieur,<br><br>
+          Actuellement étudiant en BTS SIO option SISR au lycée Gaston Berger à Lille, je souhaite approfondir mes compétences en réseaux et infrastructures informatiques.  
+          Passionné, curieux et rigoureux, je souhaite rejoindre une entreprise qui me permettra de développer mes connaissances techniques tout en participant à des projets concrets.<br><br>
+          Je vous remercie de l’attention portée à ma candidature.<br><br>
+          Cordialement,<br>
+          <strong>YANIS TONIUTTO</strong>
+        </p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
